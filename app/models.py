@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from ckeditor.fields import RichTextField
 
 class GeneralInfo(models.Model):
     company_name = models.CharField(max_length=255, default="Company")
