@@ -6,11 +6,11 @@
     <div class="container position-relative">
       <div class="row gy-5" data-aos="fade-in">
         <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start">
-          <h2>Welcome to <span>Impact</span></h2>
+          <h2>Welcome to <span>{{company_name}}</span></h2>
           <p>Empowering Success, Inspiring Growth: Your Vision, Our Expertise.</p>
           <div class="d-flex justify-content-center justify-content-lg-start">
             <a href="#services" class="btn-get-started">Get Started</a>
-            <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+            <a href="{{video_url}}" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2">
@@ -36,67 +36,18 @@
         </div>
 
         <div class="row gy-4" data-aos="fade-up" data-aos-delay="100">
-
+          {% for service in services %}
           <div class="col-lg-4 col-md-6">
             <div class="service-item  position-relative">
               <div class="icon">
-                <i class="bi bi-activity"></i>
+                <i class="{{service.icon}}"></i>
               </div>
-              <h3>Digital Marketing Mastery</h3>
-              <p>Elevate your online presence with our comprehensive digital marketing solutions.</p>
+              <h3>{{service.title}}</h3>
+              <p>{{service.description}}</p>
             </div>
           </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-broadcast"></i>
-              </div>
-              <h3>Public Relations Powerhouse</h3>
-              <p>Shape your narrative and build strong relationships with our public relations expertise. From crafting compelling press releases to managing crisis communications, we help you maintain a positive public image.</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-easel"></i>
-              </div>
-              <h3>Creative Design Solutions</h3>
-              <p>Unleash the potential of visually stunning design. Our creative team specializes in crafting compelling graphics, logos, and branding materials that captivate your audience.</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-bounding-box-circles"></i>
-              </div>
-              <h3>Web Development Wizardry</h3>
-              <p>Transform your digital footprint with our expert web development services. Whether you need a responsive website, e-commerce platform, or custom web application.</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-calendar4-week"></i>
-              </div>
-              <h3>Data Analytics Excellence</h3>
-              <p>Unlock the power of data with our advanced analytics services. From gathering valuable insights to making data-driven decisions, our analytics team is equipped to turn raw data into actionable intelligence.</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-chat-square-text"></i>
-              </div>
-              <h3>Strategic Consultancy Services</h3>
-              <p>Navigate the complexities of business with our strategic consultancy services. We offer tailored solutions to optimize your operations, enhance efficiency, and fuel sustainable growth.</p>
-            </div>
-          </div><!-- End Service Item -->
-
+        {% endfor %}
+         
         </div>
 
       </div>
@@ -365,7 +316,7 @@
                 <i class="bi bi-geo-alt flex-shrink-0"></i>
                 <div>
                   <h4>Location:</h4>
-                  <p>A108 Adam Street, New York, NY 535022</p>
+                  <p>{{location}}</p>
                 </div>
               </div><!-- End Info Item -->
 
@@ -373,7 +324,7 @@
                 <i class="bi bi-envelope flex-shrink-0"></i>
                 <div>
                   <h4>Email:</h4>
-                  <p>info@example.com</p>
+                  <p>{{email}}</p>
                 </div>
               </div><!-- End Info Item -->
 
@@ -381,7 +332,7 @@
                 <i class="bi bi-phone flex-shrink-0"></i>
                 <div>
                   <h4>Call:</h4>
-                  <p>+1 5589 55488 55</p>
+                  <p>{{phone}}</p>
                 </div>
               </div><!-- End Info Item -->
 
@@ -389,7 +340,7 @@
                 <i class="bi bi-clock flex-shrink-0"></i>
                 <div>
                   <h4>Open Hours:</h4>
-                  <p>Mon-Sat: 11AM - 23PM</p>
+                  <p>{{open_hours}}</p>
                 </div>
               </div><!-- End Info Item -->
             </div>
