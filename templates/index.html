@@ -1,4 +1,5 @@
 {% extends 'includes/main.html' %}
+{% load static %}
 
 {% block mainContent %}
   <!-- ======= Hero Section ======= -->
@@ -53,67 +54,54 @@
       </div>
     </section><!-- End Our Services Section -->
 
-    <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials">
-      <div class="container" data-aos="fade-up">
+ <!-- ======= Testimonials Section ======= -->
+ <section id="testimonials" class="testimonials">
+  <div class="container" data-aos="fade-up">
 
-        <div class="section-header">
-          <h2>Testimonials</h2>
-        </div>
+    <div class="section-header">
+      <h2>Testimonials</h2>
+    </div>
 
-        <div class="slides-3 swiper" data-aos="fade-up" data-aos-delay="100">
-          <div class="swiper-wrapper">
+    <div class="slides-3 swiper" data-aos="fade-up" data-aos-delay="100">
+      <div class="swiper-wrapper">
 
-            <div class="swiper-slide">
-              <div class="testimonial-wrap">
-                <div class="testimonial-item">
-                  <div class="d-flex align-items-center">
-                    <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img flex-shrink-0" alt="">
-                    <div>
-                      <h3>Saul Goodman</h3>
-                      <h4>Ceo &amp; Founder</h4>
-                      <div class="stars">
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                      </div>
+        {% for testimonial in testimonials %}
+          <div class="swiper-slide">
+            <div class="testimonial-wrap">
+              <div class="testimonial-item">
+                <div class="d-flex align-items-center">
+                  {% if "http" in testimonial.user_image %}
+                    <img src="{{testimonial.user_image}}" class="testimonial-img flex-shrink-0" alt="">
+                  {% else %}
+                    <img src="{% static testimonial.user_image %}" class="testimonial-img flex-shrink-0" alt="">
+                  {% endif %}
+                  <div>
+                    <h3>{{testimonial.username}}</h3>
+                    <h4>{{testimonial.user_job_title}}</h4>
+                    <div class="stars">
+                        {% for i in 'x'|ljust:testimonial.rating_count %}
+                            <i class="bi bi-star-fill"></i>
+                        {% endfor %}
                     </div>
                   </div>
-                  <p>
-                    <i class="bi bi-quote quote-icon-left"></i>
-                    Working with [Your Agency Name] was a game-changer for our business. Their team's strategic approach and attention to detail significantly boosted our online presence. They're not just an agency; they're a partner dedicated to our success.
-                    <i class="bi bi-quote quote-icon-right"></i>
-                  </p>
                 </div>
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                    {{testimonial.review}}
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
               </div>
-            </div><!-- End testimonial item -->
+            </div>
+          </div><!-- End testimonial item -->
+        {% endfor %}
 
-            <div class="swiper-slide">
-              <div class="testimonial-wrap">
-                <div class="testimonial-item">
-                  <div class="d-flex align-items-center">
-                    <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img flex-shrink-0" alt="">
-                    <div>
-                      <h3>Adam</h3>
-                      <h4>Designer</h4>
-                      <div class="stars">
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <p>
-                    <i class="bi bi-quote quote-icon-left"></i>
-                    Incredible results, exceptional service! [Your Agency Name] delivered beyond our expectations. Their creativity and expertise transformed our marketing strategy, resulting in increased leads and revenue. Highly recommended.
-                    <i class="bi bi-quote quote-icon-right"></i>
-                  </p>
-                </div>
-              </div>
-            </div><!-- End testimonial item -->
-
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
 
       </div>
-    </section><!-- End Testimonials Section -->
+      <div class="swiper-pagination"></div>
+    </div>
+
+  </div>
+</section><!-- End Testimonials Section -->
 
     <!-- ======= Frequently Asked Questions Section ======= -->
     <section id="faq" class="faq">

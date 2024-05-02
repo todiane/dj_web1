@@ -3,6 +3,7 @@ from django.shortcuts import render
 from app.models import (
     GeneralInfo,
     Service,
+    Testimonial
 )
 
 
@@ -11,6 +12,7 @@ def index(request):
     general_info = GeneralInfo.objects.first() # None
 
     services = Service.objects.all()
+    testimonials = Testimonial.objects.all()
 
     default_value = ""
 
@@ -27,6 +29,7 @@ def index(request):
         "linkedin_url": getattr(general_info, "linkedin_url", default_value),
 
         "services": services,
+        "testimonials": testimonials,
     }
 
     return render(request, "index.html", context)
