@@ -1,0 +1,24 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!-- css style link -->
+   <link rel="stylesheet" href="{% static 'style.css' %}" type="text/css">
+
+  <title>Django and Wagtail Developer</title>
+
+  {% block customStyle %}{% endblock %}
+</head>
+<body>
+  {% include 'assets/header.html' %}
+
+  <div class="main">
+    {% block mainContent %}{% endblock %}
+  </div>
+  {% include 'assets/footer.html' %}
+</body>
+</html>
