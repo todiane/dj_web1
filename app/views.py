@@ -3,7 +3,8 @@ from django.shortcuts import render
 from app.models import (
     GeneralInfo,
     Service,
-    Testimonial
+    Testimonial,
+    FrequentlyAskedQuestion,
 )
 
 
@@ -13,6 +14,7 @@ def index(request):
 
     services = Service.objects.all()
     testimonials = Testimonial.objects.all()
+    faqs = FrequentlyAskedQuestion.objects.all()
 
     default_value = ""
 
@@ -30,6 +32,8 @@ def index(request):
 
         "services": services,
         "testimonials": testimonials,
+        "faqs": faqs,
     }
 
     return render(request, "index.html", context)
+
