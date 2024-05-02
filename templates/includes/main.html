@@ -69,12 +69,9 @@
   {% endfor %}
 
   {% if 'blog' not in request.path %}
-    {% include 'assets/header.html' %}
-    {% include 'assets/hero.html' %}
+    {% include 'includes/header.html' %}
+    {% include 'includes/hero.html' %}
   {% endif %}
-
-
-  {% include 'includes/header.html' %}
 
   <div class="main">
     {% block mainContent %}{% endblock %}
