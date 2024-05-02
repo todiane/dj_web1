@@ -33,9 +33,9 @@ class GeneralInfoAdmin(admin.ModelAdmin):
     #     return False
 
     # show you can set field to disable update
-    readonly_fields = [
-        'email'
-    ]
+    # readonly_fields = [
+    #     'email'
+    # ]
 
 
 @admin.register(Service)

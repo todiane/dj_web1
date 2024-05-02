@@ -20,8 +20,12 @@ def index(request):
     general_info = GeneralInfo.objects.first() # None
 
     services = Service.objects.all()
+
     testimonials = Testimonial.objects.all()
+
     faqs = FrequentlyAskedQuestion.objects.all()
+
+    recent_blogs = Blog.objects.all().order_by("-created_at")[:3]
 
     default_value = ""
 
@@ -40,6 +44,7 @@ def index(request):
         "services": services,
         "testimonials": testimonials,
         "faqs": faqs,
+        "recent_blogs": recent_blogs,
     }
 
     return render(request, "index.html", context)
