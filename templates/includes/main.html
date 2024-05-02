@@ -31,6 +31,14 @@
     {% comment %} <link href="assets/css/main.css" rel="stylesheet"> {% endcomment %}
     <link rel="stylesheet" type="text/css" href="{% static 'assets/css/main.css' %}">
 
+    <style>
+      .sticky-alert {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 1000; /* Adjust the z-index as needed */
+      }
+    </style>
   
     <!-- =======================================================
     * Template Name: Impact
@@ -47,6 +55,25 @@
   {% block customStyle %}{% endblock %}
 </head>
 <body>
+
+  {% for message in messages %}
+  {% if message.tags == "error" %}
+    <div div class="alert alert-danger alert-dismissible fade show sticky-alert" role="alert">
+  {% else %}
+    <div div class="alert alert-success alert-dismissible fade show sticky-alert" role="alert">
+  {% endif %}
+
+  {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  {% endfor %}
+
+  {% if 'blog' not in request.path %}
+    {% include 'assets/header.html' %}
+    {% include 'assets/hero.html' %}
+  {% endif %}
+
+
   {% include 'includes/header.html' %}
 
   <div class="main">
