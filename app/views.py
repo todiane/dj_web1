@@ -1,12 +1,17 @@
-from django.shortcuts import render
-
+from django.shortcuts import render, redirect
+from django.core.mail import send_mail
+from django.conf import settings
+from django.template.loader import render_to_string
+from django.contrib import messages
+from django.utils import timezone
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from app.models import (
     GeneralInfo,
     Service,
     Testimonial,
     FrequentlyAskedQuestion,
     ContactFormLog,
-    Blog, 
+    Blog,
 )
 
 
