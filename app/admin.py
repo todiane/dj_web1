@@ -1,5 +1,13 @@
 from django.contrib import admin
-from app.models import GeneralInfo, Service, Testimonial, FrequentlyAskedQuestion, ContactFormLog 
+from app.models import (
+    GeneralInfo,
+    Service,
+    Testimonial,
+    FrequentlyAskedQuestion,
+    ContactFormLog,
+    Blog,
+    Author,
+)
 
 @admin.register(GeneralInfo)
 class GeneralInfoAdmin(admin.ModelAdmin):
@@ -29,6 +37,7 @@ class GeneralInfoAdmin(admin.ModelAdmin):
         'email'
     ]
 
+
 @admin.register(Service)
 class ServiceAdmin(admin.ModelAdmin):
 
@@ -42,6 +51,7 @@ class ServiceAdmin(admin.ModelAdmin):
         "title",
         "description"
     ]
+
 
 @admin.register(Testimonial)
 class TestimonialAdmin(admin.ModelAdmin):
@@ -57,6 +67,7 @@ class TestimonialAdmin(admin.ModelAdmin):
         return '*' * obj.rating_count
 
     display_rating_count.short_description = "Rating"
+
 
 @admin.register(FrequentlyAskedQuestion)
 class FrequentlyAskedQuestionAdmin(admin.ModelAdmin):
@@ -86,3 +97,24 @@ class ContactFormLogAdmin(admin.ModelAdmin):
     def has_delete_permission(self, request, obj=None):
         return False
 
+
+@admin.register(Author)
+class AuthorAdmin(admin.ModelAdmin):
+
+    # displays selected fields
+    list_display = [
+        'first_name',
+        'last_name',
+    ]
+
+@admin.register(Blog)
+class BlogAdmin(admin.ModelAdmin):
+
+    # displays selected fields
+    list_display = [
+        'category',
+        'author',
+        'title',
+        'blog_image',
+        'created_at',
+    ]

@@ -1,8 +1,7 @@
-"""
-URL configuration for nub project.
+"""company URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.0/topics/http/urls/
+    https://docs.djangoproject.com/en/3.1/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -19,10 +18,14 @@ from django.urls import path
 from app.views import (
     index,
     contact_form,
+    blog_detail,
+    blogs,
 )
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path('', index),
+    path('admin/', admin.site.urls),
+    path('', index, name="home"),
     path('contact/', contact_form, name="contact_form"),
+    path('blog-detail/<blog_id>', blog_detail, name="blog_detail"),
+    path('blogs/', blogs, name="blogs")
 ]
