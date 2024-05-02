@@ -70,7 +70,7 @@ def contact_form(request):
                 subject=subject,
                 message=None,
                 html_message=html_content,
-                # from_email=settings.EMAIL_HOST_USER,
+                from_email=settings.EMAIL_HOST_USER,
                 recipient_list=[settings.EMAIL_HOST_USER],
                 fail_silently=False, # default is True
             )

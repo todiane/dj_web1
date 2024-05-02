@@ -78,7 +78,7 @@ class Blog(models.Model):
     category = models.CharField(max_length=50, null=True, blank=True)
     title = models.CharField(max_length=255)
     author = models.ForeignKey(Author, on_delete=models.PROTECT, null=True, blank=True)
-    # on_delete=models.CASCADE - if detelting the author, django will auto delete the author's blogs
+    # on_delete=models.CASCADE - if deleting the author, django will auto delete the author's blogs
     # on_delete=models.PROTECT - if deleting the author, django will not allow that if the author has blogs
     # on_delete=models.SET_NULL - if deleting the author, django will make author column as blank (requires to have null=True & blank=True attributes on author column)
     

@@ -120,8 +120,8 @@
     </div>
   </section><!-- End Frequently Asked Questions Section -->
 
-    <!-- ======= Recent Blog Posts Section ======= -->
-    <section id="recent-posts" class="recent-posts sections-bg">
+     <!-- ======= Recent Blog Posts Section ======= -->
+     <section id="recent-posts" class="recent-posts sections-bg">
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
@@ -130,80 +130,36 @@
 
         <div class="row gy-4">
 
+        {% for blog in recent_blogs %}
           <div class="col-xl-4 col-md-6">
             <article>
 
               <div class="post-img">
-                <img src="assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
+                {% if "http" in blog.blog_image %}
+                      <img src="{{ blog.blog_image }}" alt="" class="img-fluid">
+                  {% else %}
+                      <img src="{% static blog.blog_image %}" alt="" class="img-fluid">
+                  {% endif %}
               </div>
 
-              <p class="post-category">Politics</p>
+              <p class="post-category">{{blog.category}}</p>
 
               <h2 class="title">
-                <a href="blog-details.html">The Shifting Tides: Navigating the Complex World of Politics</a>
+                <a href="{% url 'blog_detail' blog_id=blog.id %}">{{blog.title}}</a>
               </h2>
 
               <div class="d-flex align-items-center">
                 <div class="post-meta">
-                  <p class="post-author">Maria Doe</p>
+                  <p class="post-author">{{blog.author.first_name}} {{blog.author.last_name}}</p>
                   <p class="post-date">
-                    <time datetime="2022-01-01">Jan 1, 2022</time>
+                    <time datetime="2022-01-01">{{ blog.created_at|date:"M j, Y"}}</time>
                   </p>
                 </div>
               </div>
 
             </article>
           </div><!-- End post list item -->
-
-          <div class="col-xl-4 col-md-6">
-            <article>
-
-              <div class="post-img">
-                <img src="assets/img/blog/blog-2.jpg" alt="" class="img-fluid">
-              </div>
-
-              <p class="post-category">Sports</p>
-
-              <h2 class="title">
-                <a href="blog-details.html">Game On: Exploring the Thrills and Triumphs of the Sporting World</a>
-              </h2>
-
-              <div class="d-flex align-items-center">
-                <div class="post-meta">
-                  <p class="post-author">Allisa Mayer</p>
-                  <p class="post-date">
-                    <time datetime="2022-01-01">Jun 5, 2022</time>
-                  </p>
-                </div>
-              </div>
-
-            </article>
-          </div><!-- End post list item -->
-
-          <div class="col-xl-4 col-md-6">
-            <article>
-
-              <div class="post-img">
-                <img src="assets/img/blog/blog-3.jpg" alt="" class="img-fluid">
-              </div>
-
-              <p class="post-category">Entertainment</p>
-
-              <h2 class="title">
-                <a href="blog-details.html">Spotlight Chronicles: Unveiling the World of Entertainment</a>
-              </h2>
-
-              <div class="d-flex align-items-center">
-                <div class="post-meta">
-                  <p class="post-author">Mark Dower</p>
-                  <p class="post-date">
-                    <time datetime="2022-01-01">Jun 22, 2022</time>
-                  </p>
-                </div>
-              </div>
-
-            </article>
-          </div><!-- End post list item -->
+        {% endfor %}
 
         </div><!-- End recent posts list -->
 
