@@ -66,3 +66,23 @@ class FrequentlyAskedQuestionAdmin(admin.ModelAdmin):
         'question',
         'answer',
     ]
+
+@admin.register(ContactFormLog)
+class ContactFormLogAdmin(admin.ModelAdmin):
+
+    list_display = [
+        'email',
+        'is_success',
+        'is_error',
+        'action_time',
+    ]
+
+    def has_add_permission(self, request, obj=None):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
