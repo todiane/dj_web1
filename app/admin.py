@@ -1,5 +1,5 @@
 from django.contrib import admin
-from app.models import GeneralInfo, Service, Testimonial, FrequentlyAskedQuestion 
+from app.models import GeneralInfo, Service, Testimonial, FrequentlyAskedQuestion, ContactFormLog 
 
 @admin.register(GeneralInfo)
 class GeneralInfoAdmin(admin.ModelAdmin):

@@ -16,9 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from app.views import index
+from app.views import (
+    index,
+    contact_form,
+)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('', index)
+    path('', index),
+    path('contact/', contact_form, name="contact_form"),
 ]
