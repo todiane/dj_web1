@@ -83,7 +83,7 @@ class Blog(models.Model):
     # on_delete=models.SET_NULL - if deleting the author, django will make author column as blank (requires to have null=True & blank=True attributes on author column)
     
     created_at = models.DateTimeField(default=timezone.now)
-    content = RichTextField() #models.TextField()
+    content = RichTextField()
 
     def __str__(self):
         return self.title
