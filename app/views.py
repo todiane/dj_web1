@@ -103,8 +103,8 @@ def contact_form(request):
 def blog_detail(request, blog_id):
     blog = Blog.objects.get(id=blog_id)
 
-    recent_blogs = Blog.objects.all().exclude(id=blog_id).order_by("-created_at")[:2]
-
+    recent_blogs = Blog.objects.all().exclude(id=blog_id).order_by("-created_at")[:4]
+    print(recent_blogs)
     context = {
         "blog": blog,
         "recent_blogs": recent_blogs,
